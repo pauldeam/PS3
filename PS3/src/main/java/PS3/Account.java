@@ -1,6 +1,7 @@
 package PS3;
 
 import java.util.Date;
+import java.io.*;
 
 public class Account {
 	
@@ -34,53 +35,94 @@ public class Account {
 
 	
 	/**
-	 * 
-	 * @return
+	 * Getter for id
+	 * @return id
 	 */
 	public static int getId() {
 		return id;
 	}
+	
 	/**
-	 * 
+	 * Setter for id
 	 * @return
 	 */
 	public static void setId(int id) {
 		Account.id = id;
 	}
+	
 	/**
-	 * 
-	 * @return
+	 * Getter for balance
+	 * @return balance
 	 */
 	public static double getBalance() {
 		return balance;
 	}
+	
 	/**
-	 * 
+	 * Setter for balance
 	 * @return
 	 */
 	public static void setBalance(double balance) {
 		Account.balance = balance;
 	}
+	
 	/**
-	 * 
-	 * @return
+	 * Getter for annual interest rate
+	 * @return annualInterestRate
 	 */
 	public static double getAnnualInterestRate() {
 		return annualInterestRate;
 	}
+	
 	/**
-	 * 
+	 * setter for annual interest rate
 	 * @return
 	 */
 	public static void setAnnualInterestRate(double annualInterestRate) {
 		Account.annualInterestRate = annualInterestRate;
 	}
+	
 	/**
-	 * 
-	 * @return
+	 * Gets the monthly interest rate
+	 * @return monthlyInterestRate
+	 */
+	public double monthlyInterestRate()
+	{
+		return annualInterestRate * (1/12);
+	}
+	
+	/**
+	 * Getter for date created
+	 * @return dateCreated
 	 */
 	public static Date getDateCreated() {
 		return dateCreated;
+	}
+	
+	/**
+	 * withdraw method that throws the exception if too much $$ is draw from the account
+	 * @param withdrawAmount
+	 * @throws InsufficientFundsException
+	 */
+	public void withdraw(double withdrawAmount) throws InsufficientFundsException	
+	{
+		if(withdrawAmount <= balance)
+		{
+			balance -= withdrawAmount;
+		}
+		else
+		{
+			throw new InsufficientFundsException(withdrawAmount - balance);
+		}
+	}
+	
+	/**
+	 * Deposits a specified amount in the account
+	 * @param depositAmount
+	 */
+	public void deposit(double depositAmount)
+	{
+		balance += depositAmount;
 	}
 
 }
