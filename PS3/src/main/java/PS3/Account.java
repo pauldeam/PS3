@@ -23,10 +23,8 @@ public class Account {
 	
 	/**
 	 * Creates account with specified values 
-	 * @param id
-	 * @param balance
 	 */
-	public Account(int id, double balance)
+	public static void realAccount(int id, double balance)
 	{
 		id = id;
 		balance = balance;
@@ -86,7 +84,7 @@ public class Account {
 	 * Gets the monthly interest rate
 	 * @return monthlyInterestRate
 	 */
-	public double monthlyInterestRate()
+	public static double monthlyInterestRate()
 	{
 		return annualInterestRate * (1/12);
 	}
@@ -104,7 +102,7 @@ public class Account {
 	 * @param withdrawAmount
 	 * @throws InsufficientFundsException
 	 */
-	public void withdraw(double withdrawAmount) throws InsufficientFundsException	
+	public static void withdraw(double withdrawAmount) throws InsufficientFundsException	
 	{
 		if(withdrawAmount <= balance)
 		{
@@ -120,7 +118,7 @@ public class Account {
 	 * Deposits a specified amount in the account
 	 * @param depositAmount
 	 */
-	public void deposit(double depositAmount)
+	public static void deposit(double depositAmount)
 	{
 		balance += depositAmount;
 	}
